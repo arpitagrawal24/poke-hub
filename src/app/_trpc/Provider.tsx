@@ -5,7 +5,7 @@ import React, { useState } from "react";
 
 import { trpc } from "./client";
 
-const apiUrl = `${process.env.NEXT_PUBLIC_PROD_URL}/api/trpc`; 
+const apiUrl = `https://pokehub24.vercel.app/api/trpc`; 
 
 export default function Provider({ children }: { children: React.ReactNode }) {
   const [queryClient] = useState(() => new QueryClient({}));
@@ -13,7 +13,13 @@ export default function Provider({ children }: { children: React.ReactNode }) {
     trpc.createClient({
       links: [
         httpBatchLink({
-          url: apiUrl,
+          url: apiUrl, 
+          fetch(url, options) {
+            return fetch(url, {
+              ...options,
+              credentials: 'include',
+            });
+          },
         }),
       ],
     })
