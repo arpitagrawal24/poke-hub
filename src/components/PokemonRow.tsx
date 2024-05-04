@@ -2,10 +2,13 @@
 
 import { Card, CardContent, Typography, Box } from "@mui/material";
 import Image from "next/image";
-// import { Pokemon } from "../types"; // Assuming you have a type definition for Pokemon
 
 interface PokemonRowProps {
-  pokemon: Pokemon;
+  pokemon: {
+    name: string;
+    types: string[];
+    sprite: string;
+  };
 }
 
 const PokemonRow: React.FC<PokemonRowProps> = ({ pokemon }) => {

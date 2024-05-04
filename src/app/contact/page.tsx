@@ -6,7 +6,9 @@ export default function Contact() {
       <Typography variant="h3">Contact</Typography>
       <Typography variant="body1">
         You can contact us at{" "}
-        <a href="mailto:arpitagrawal2402@gmail.com">arpitagrawal2402@gmail.com</a>.
+        <span>
+          <a href="mailto:arpitagrawal2402@gmail.com">arpitagrawal2402@gmail.com</a>
+        </span>
       </Typography>
     </Container>
   );

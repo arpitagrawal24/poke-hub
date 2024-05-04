@@ -1,7 +1,18 @@
-import PokemonRow from "./PokemonRow";
-import { Paper, Typography, Grid } from "@mui/material";
+// components/PokemonTable.tsx
 
-const PokemonTable = ({ pokemonArray }) => {
+import { Paper, Typography, Grid } from "@mui/material";
+import PokemonRow from "./PokemonRow";
+
+interface PokemonTableProps {
+  pokemonArray: {
+    id: string;
+    name: string;
+    types: string[];
+    sprite: string;
+  }[];
+}
+
+const PokemonTable: React.FC<PokemonTableProps> = ({ pokemonArray }) => {
   return (
     <Paper elevation={3} sx={{ padding: 2, marginTop: 2 }}>
       <Typography variant="h5" gutterBottom>

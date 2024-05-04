@@ -16,31 +16,21 @@ import {
 import { trpc } from "./_trpc/client";
 import PokemonRow from "@/components/PokemonRow";
 import PokemonTable from "@/components/PokemonTable";
-import { FitScreen } from "@mui/icons-material";
+import { pokemonTypes } from "@/utils/pokemonTypes";
 
-const pokemonTypes = [
-  { value: "", label: "All" },
-  { value: "x", label: "None" },
-  { value: "grass", label: "Grass" },
-  { value: "fire", label: "Fire" },
-  { value: "water", label: "Water" },
-  { value: "fairy", label: "Fairy" },
-  { value: "normal", label: "Normal" },
-  { value: "electric", label: "Electric" },
-  { value: "rock", label: "Rock" },
-  { value: "ground", label: "Ground" },
-  { value: "fighting", label: "Fighting" },
-  { value: "ghost", label: "Ghost" },
-  { value: "poison", label: "Poison" },
-  { value: "dragon", label: "Dragon" },
-  { value: "flying", label: "Flying" },
-  { value: "psychic", label: "Psychic" },
-];
+
+interface Pokemon {
+  id: string;
+  name: string;
+  types: string[];
+  sprite: string;
+}
+
 
 export default function Home() {
   const [pokemonName, setPokemonName] = useState("");
   const [pokemonNames, setPokemonNames] = useState("");
-  const [selectedType, setSelectedType] = useState<string | undefined>();
+  const [selectedType, setSelectedType] = useState<string | undefined>("");
   const [searchMode, setSearchMode] = useState<
     "single" | "multiple" | "filter"
   >("single");
@@ -111,7 +101,7 @@ export default function Home() {
             <TextField
               select
               label="Select Type"
-              value={selectedType}
+              value={selectedType|| ''}
               onChange={handleTypeChange}
               variant="outlined"
               size="small"
